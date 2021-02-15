@@ -1,0 +1,52 @@
+[
+  {
+    "id": "giraffe", 
+    "name": "giraffe",
+    "specificName": "Forest",
+    "height": 5.7,
+    "img": "/ressources/...",
+    "leftOffset": 6,
+    "sources": [
+      "wikipedia",
+      "etc"
+    ]
+  },
+  {
+    "id": "tree",
+    "name": "tree",
+    "specificName": "Sequoia sempervirens",
+    "height": 115.7,
+    "img": "/ressources/...",
+    "leftOffset": 20,
+    "sources": [
+      "wikipedia",
+      "etc"
+    ]
+  },
+  {
+    "id": "man",
+    "name": "man",
+    "specificName": "Robert Waldo",
+    "height": 2.7,
+    "img": "/ressources/...",
+    "leftOffset": 16,
+    "sources": [
+      "wikipedia",
+      "etc"
+    ]
+  },
+  {
+    "id": "burjKhalifa",
+    "name": "building",
+    "specificName": "Burj Khalifa",
+    "height": 828,
+    "img": "/ressources/...",
+    "leftOffset": 25,
+    "sources": [
+      "wikipedia",
+      "etc"
+    ]
+  }
+  
+  
+]

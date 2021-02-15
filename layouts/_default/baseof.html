@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
+
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/opengraph.html" . }}
+
+    {{ if .Permalink }}
+      <base href="{{ .Permalink }}">
+    {{ end }}
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+    {{ if .Permalink }}
+      <link rel="canonical" href="{{ .Permalink }}">
+    {{ end }}
+
+    {{ if .Site.IsServer }}
+      {{ $cssOpts := (dict "targetPath" "css/main.css" "enableSourceMap" true ) }}
+      {{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.css" . | toCSS $cssOpts | minify }}
+      <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+    {{ else }}
+      {{ $cssOpts := (dict "targetPath" "css/main.css" ) }}
+      {{ $styles := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.css" . | toCSS $cssOpts | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
+    {{ end }}
+
+    {{ range .AlternativeOutputFormats -}}
+      {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+
+    {{ hugo.Generator }}
+    <noscript>{{/* Hide stuff that won't work without JS here (display:none) */}}</noscript>
+    <meta name="monetization" content="$ilp.uphold.com/Zn2iQrmHPB3W">
+  </head>
+
+  <body>
+
+    <div id="splashScreen">How High is Loading</div>
+    <img src="/img/logo.svg" alt="todo">
+  
+    {{ range getJSON "/data/things.json"}}
+      <div id="{{.id}}" style="height:{{.height}}rem;left:{{.leftOffset}}vw">
+        <span>Tallest {{ .name }}, {{ .specificName }}, {{ .height }} meters</span>
+      </div>
+    {{ end }}
+
+    Troposphere
+    8 to 14.5 kilometers high. Almost all weather is in this region.
+  
+    Stratosphere
+    50 kilometers. The ozone layer is in this layer.
+  
+    Mesosphere
+    85 kilometers. Meteors burn up in this layer
+  
+    Thermosphere
+    600 kilometers. Aurora and satellites occur in this layer.
+  
+    Ionosphere
+    from 48 kilometers to the edge of space at about 965 km (600 mi). This dynamic region grows and shrinks based on solar conditions and divides further into the sub-regions:
+    The ionosphere is a critical link in the chain of Sun-Earth interactions. This region is what makes radio communications possible.
+  
+    Exosphere
+    It extends from the top of the thermosphere up to 10,000 km
+  
+    <!-- <div id="tree"><span>Tallest tree, Sequoia sempervirens, 115.7 meters</span></div> -->
+    <!-- <div id="man"><span>Tallest man, Robert Waldo, 2.7 meters</span></div> -->
+    <!-- <div id="giraffe"><span>Tallest giraffe, 5.7 meters</span></div> -->
+    <!-- <div id="burjKhalifa"><span>Tallest building, Burj Khalifa, 828 meters</span></div> -->
+    <div id="meter"><span>←This is 1 meter</span></div>
+    <section>
+      <h1>How High?</h1>
+      <p>Barely a POC for now, but coming soon.</p>
+      <footer>By <a href="https://www.felixparadis.com">Félix Paradis</a></footer>
+      <p>Inspired by <a href="https://neal.fun/deep-sea/">Neal Agarwal's "The Deep Sea"</a></p>
+    </section>
+
+    {{ $mainJS := (resources.Get "js/index.js") | resources.ExecuteAsTemplate "index.js" . | minify }}
+    <script>{{ $mainJS.Content | safeJS }}</script>
+    
+    {{ if not .Site.IsServer }}
+      {{/* Maybe some analytics here? */}}
+    {{ end }}
+  </body>
+</html>

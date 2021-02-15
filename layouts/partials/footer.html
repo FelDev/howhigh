@@ -1,0 +1,5 @@
+<footer class="footer">
+  {{ with .Site.Params.footercontent | safeHTML }}
+    <p>{{.}}</p>
+  {{ end }}
+</footer>
