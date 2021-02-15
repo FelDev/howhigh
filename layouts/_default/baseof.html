@@ -45,35 +45,24 @@
     <div id="splashScreen">How High is Loading</div>
     <img src="/img/logo.svg" alt="todo">
   
-    {{ range getJSON "/data/things.json"}}
-      <div id="{{.id}}" style="height:{{.height}}rem;left:{{.leftOffset}}vw">
-        <span>Tallest {{ .name }}, {{ .specificName }}, {{ .height }} meters</span>
+    {{ range getJSON "/data/tallest.json"}}
+      <div style="height:{{.height}}rem;left:{{.leftOffset}}vw">
+        {{ $decimalLength := len (replaceRE `^\d*\.` "" .height) }}
+        <span>Tallest {{ .name }}, {{ .specificName }}, {{ lang.NumFmt $decimalLength .height }} meters</span>
+      </div>
+    {{ end }}
+    {{ range getJSON "/data/highest.json"}}
+      <div style="height:{{.height}}rem;left:{{.leftOffset}}vw">
+        <span>Highest {{ .name }}, {{ .specificName }}, {{ .height }} meters {{ lang.NumFmt 1 .height }}mètres</span>
+      </div>
+    {{ end }}
+    {{ range getJSON "/data/landmarks.json"}}
+      <div style="height:{{.height}}rem;left:{{.leftOffset}}vw">
+        <span>{{ .description }}, {{ .height }} meters</span>
       </div>
     {{ end }}
 
-    Troposphere
-    8 to 14.5 kilometers high. Almost all weather is in this region.
   
-    Stratosphere
-    50 kilometers. The ozone layer is in this layer.
-  
-    Mesosphere
-    85 kilometers. Meteors burn up in this layer
-  
-    Thermosphere
-    600 kilometers. Aurora and satellites occur in this layer.
-  
-    Ionosphere
-    from 48 kilometers to the edge of space at about 965 km (600 mi). This dynamic region grows and shrinks based on solar conditions and divides further into the sub-regions:
-    The ionosphere is a critical link in the chain of Sun-Earth interactions. This region is what makes radio communications possible.
-  
-    Exosphere
-    It extends from the top of the thermosphere up to 10,000 km
-  
-    <!-- <div id="tree"><span>Tallest tree, Sequoia sempervirens, 115.7 meters</span></div> -->
-    <!-- <div id="man"><span>Tallest man, Robert Waldo, 2.7 meters</span></div> -->
-    <!-- <div id="giraffe"><span>Tallest giraffe, 5.7 meters</span></div> -->
-    <!-- <div id="burjKhalifa"><span>Tallest building, Burj Khalifa, 828 meters</span></div> -->
     <div id="meter"><span>←This is 1 meter</span></div>
     <section>
       <h1>How High?</h1>

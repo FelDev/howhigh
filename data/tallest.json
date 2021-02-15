@@ -7,8 +7,7 @@
     "img": "/ressources/...",
     "leftOffset": 6,
     "sources": [
-      "wikipedia",
-      "etc"
+      "https://www.cnn.com/2020/07/31/australia/worlds-tallest-giraffe-scli-intl-scn/index.html#:~:text=Meet%20Forest%2C%20the%20tallest%20giraffe%20in%20the%20world&text=(CNN)%20A%20male%20giraffe%20living,18%20feet%2C%208%20inches)."
     ]
   },
   {
@@ -19,20 +18,18 @@
     "img": "/ressources/...",
     "leftOffset": 20,
     "sources": [
-      "wikipedia",
-      "etc"
+      "https://www.livescience.com/28729-tallest-tree-in-world.html"
     ]
   },
   {
     "id": "man",
     "name": "man",
     "specificName": "Robert Waldo",
-    "height": 2.7,
+    "height": 2.72,
     "img": "/ressources/...",
     "leftOffset": 16,
     "sources": [
-      "wikipedia",
-      "etc"
+      "https://www.guinnessworldrecords.com/records/hall-of-fame/robert-wadlow-tallest-man-ever#:~:text=The%20twins%20then%20named%20Robert,8%20ft%2011.1%20in)%20tall."
     ]
   },
   {
@@ -43,10 +40,10 @@
     "img": "/ressources/...",
     "leftOffset": 25,
     "sources": [
-      "wikipedia",
-      "etc"
+      "https://en.wikipedia.org/wiki/List_of_tallest_buildings"
     ]
   }
+  
   
   
 ]

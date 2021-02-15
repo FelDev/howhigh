@@ -1,17 +1,21 @@
 body {
-  height: 10000rem;
+  height: 50000rem;
   background: skyblue;
   background: linear-gradient(0deg, skyblue, #20323a);
   font-size: 1.8rem;
   position: relative;
+  margin-bottom: 2rem; // fixes weird bug in Chrome; linear-gradient is... repeated? in the pseudo element 
   &::before {
     content: "TODO: Make this look like grass";
-    height: 2rem;
+    height: 4rem;
     background: green;
     display: block;
-    bottom: -2rem;
+    bottom: -4rem;
     width: 100%;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 img {

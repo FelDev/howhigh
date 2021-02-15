@@ -1,0 +1,25 @@
+[
+
+  {
+    "id": "montreal",
+    "description": "Montréal's Olympic Stadium",
+    "height": 165,
+    "img": "/ressources/...",
+    "leftOffset": 5,
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Stade_olympique_de_Montr%C3%A9al"
+    ]
+  },
+  {
+    "id": "eiffel",
+    "description": "Eiffel tower in Paris",
+    "height": 300,
+    "img": "/ressources/...",
+    "leftOffset": 50,
+    "sources": [
+      "https://fr.wikipedia.org/wiki/Tour_Eiffel"
+    ]
+  }
+  
+  
+]
